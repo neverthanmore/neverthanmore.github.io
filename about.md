@@ -15,10 +15,10 @@ permalink: /about/
 
 ### Contact me
 
-* github：[gitHub]
+* github：[github]
 * 邮箱：<wangjiaweicoder@126.com>
 * 微博：[neverthanmore]
 
 [wangjiaweicoder@126.com]:wangjiaweicoder@126.com
 [neverthanmore]:http://weibo.com/2603636314/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1
-[gitHub]:https://github.com/neverthanmore
+[github]:https://github.com/neverthanmore
