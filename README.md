@@ -1,8 +1,8 @@
 # 我的技术博客neverthanmore
 
-([博客地址](https://neverthanmore.github.io))
+[博客地址](https://neverthanmore.github.io)
 
-#博客使用的主题是来自Barry Clark
+# 博客使用的主题是来自Barry Clark
 
 # Jekyll Now
 
