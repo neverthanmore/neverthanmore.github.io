@@ -9,7 +9,7 @@ name: Neverthanmore
 description: A Javascript Developer
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: https://github.com/neverthanmore/neverthanmore.github.io/blob/master/images/nev.jpeg
+avatar: https://sfault-avatar.b0.upaiyun.com/284/139/2841393404-56cc6f9f3fd40_huge256
 
 #
 # Flags below are optional
@@ -18,15 +18,15 @@ avatar: https://github.com/neverthanmore/neverthanmore.github.io/blob/master/ima
 # Includes an icon in the footer for each username you enter
 footer-links:
   dribbble:
-  email:
+  email: wangjiaweicoder@126.com
   facebook:
   flickr:
-  github: barryclark/jekyll-now
+  github: neverthanmore
   instagram:
   linkedin:
   pinterest:
   rss: # just type anything here for a working RSS icon
-  twitter: jekyllrb
+  twitter: Tcmai
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
   youtube: # channel/<your_long_string> or user/<user-name>
   googleplus: # anything in your profile username that comes after plus.google.com/
