@@ -11,7 +11,7 @@ permalink: /about/
 ### More Information
 
 * 开发前端之前，是一个PHP开发者！
-* 目前就职于[南京途牛旅游网](www.tuniu.com),前端开发人员！
+* 目前就职于[南京途牛旅游网](http://www.tuniu.com),前端开发人员！
 
 ### Contact me
 
