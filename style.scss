@@ -282,7 +282,26 @@ footer {
   padding: 20px 0;
   text-align: center;
 }
+.site-footer {
+    position: relative;
+    margin: 8rem 0 0 0;
+    padding: 0.5rem 15px;
+    border-top: #EBF2F6 1px solid;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1rem;
+    line-height: 1.75em;
+    color: #BBC7CC;
+}
 
+.site-footer a {
+    color: #BBC7CC;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.site-footer a:hover {
+    color: #50585D;
+}
 .poweredby {
     display: block;
     width: 45%;
