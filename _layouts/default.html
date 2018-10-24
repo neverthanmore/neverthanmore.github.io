@@ -100,7 +100,9 @@
           })
         }
       })
-      .catch(err => console.error('Service Worker Error', err));
+      .catch(() => {
+        console.log('err')
+      });
   }
 </script>
 
