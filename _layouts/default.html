@@ -1,64 +1,107 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
 
-    {% include meta.html %}
+<head>
+  <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
 
-    <!--[if lt IE 9]>
+  {% include meta.html %}
+
+  <!--[if lt IE 9]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
-    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
+  <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
 
-    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
-  </head>
+  <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+</head>
 
-  <body>
-    <div class="wrapper-masthead">
-      <div class="container">
-        <header class="masthead clearfix">
-          <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
+<body>
+  <div class="wrapper-masthead">
+    <div class="container">
+      <header class="masthead clearfix">
+        <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
 
-          <div class="site-info">
-            <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
-            <p class="site-description">{{ site.description }}</p>
-          </div>
+        <div class="site-info">
+          <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
+          <p class="site-description">{{ site.description }}</p>
+        </div>
 
-          <nav>
-            <a href="{{ site.baseurl }}/">Blog</a>
-            <a href="{{ site.baseurl }}/about">About</a>
-          </nav>
-        </header>
-      </div>
+        <nav>
+          <a href="{{ site.baseurl }}/">Blog</a>
+          <a href="{{ site.baseurl }}/about">About</a>
+        </nav>
+      </header>
     </div>
+  </div>
 
-    <div id="main" role="main" class="container">
-      {{ content }}
+  <div id="main" role="main" class="container">
+    {{ content }}
+  </div>
+
+  <div class="wrapper-footer">
+    <div class="container">
+      <footer class="footer">
+        {% include svg-icons.html %}
+      </footer>
     </div>
+  </div>
 
-    <div class="wrapper-footer">
-      <div class="container">
-        <footer class="footer">
-          {% include svg-icons.html %}
-        </footer>
-      </div>
-    </div>
+  <footer class="site-footer clearfix">
+    <section class="copyright">
+      <a href="{{ site.baseurl }}">{{ site.name }}</a> &copy;
+      {{date format="YYYY"}} &bull; All rights reserved.
+    </section>
+    <section class="poweredby">Made with Jekyll using
+      <a href="http://github.com/barryclark/jekyll-now">jekyll-now theme</a>
+    </section>
+  </footer>
 
-    <footer class="site-footer clearfix">
-      <section class="copyright">
-        <a href="{{ site.baseurl }}">{{ site.name }}</a> &copy;
-              {{date format="YYYY"}} &bull; All rights reserved.
-      </section>
-      <section class="poweredby">Made with Jekyll using
-        <a href="http://github.com/barryclark/jekyll-now">jekyll-now theme</a>
-      </section>
-    </footer>
+  {% include analytics.html %}
+</body>
+<script>
+  // BCrkuTxJxMIoC5rXhuFs3BsBXH3fhiy6cxbBaqKMOPDvxa7Vt1YlcsGZ3L37BqETgsKdTRoqOJE3b3cm64Jr-Gw
+  // nvvdkfRmDSL1YnX3SGuPHwUus4s9LBBG-9djfKF472c
+  const applicationServerPublicKey = 'BCrkuTxJxMIoC5rXhuFs3BsBXH3fhiy6cxbBaqKMOPDvxa7Vt1YlcsGZ3L37BqETgsKdTRoqOJE3b3cm64Jr-Gw'
 
-    {% include analytics.html %}
-  </body>
-  <script>
-    window.addEventListener('load', () => console.log('wjw'))
-  </script>
+  function urlB64ToUint8Array(base64String) {
+    const padding = '='.repeat((4 - base64String.length % 4) % 4);
+    const base64 = (base64String + padding)
+      .replace(/\-/g, '+')
+      .replace(/_/g, '/');
+
+    const rawData = window.atob(base64);
+    const outputArray = new Uint8Array(rawData.length);
+
+    for (let i = 0; i < rawData.length; ++i) {
+      outputArray[i] = rawData.charCodeAt(i);
+    }
+    return outputArray;
+  }
+
+  window.onload = function () {
+    navigator.serviceWorker.register('./sw.js')
+      .then(registration => {
+        conosle.log('register successfully!');
+        if ('PushManager' in window) {
+          navigator.serviceWorker.ready.then(() => {
+            registration.pushManager.getSubscription()
+              .then(subscription => {
+                console.log(subscription);
+                if (!subscription) {
+                  registration.pushManager.subscribe({
+                    userVisibleOnly: true,
+                    applicationServerKey: urlB64ToUint8Array(applicationServerPublicKey)
+                  }).then((sub) => console.log('subscribed successfully!', JSON.stringify(sub)))
+                } else {
+                  console.log('User is subscribed')
+                }
+              })
+          })
+        }
+      })
+      .catch(err => console.error('Service Worker Error', error));
+  }
+</script>
+
 </html>
