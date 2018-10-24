@@ -3,13 +3,11 @@ const expectedCaches = ['static-v17'];
 self.addEventListener('install', event => {
   console.log('v17 installing…');
 
-  // 将 horse.svg 缓存在新的缓存 static-v2 中
-  // console.log(this.registration)
-  // event.waitUntil(
-  //   caches
-  //     .open('static-v17')
-  //     .then(cache => cache.addAll(['https://localhost/', '/images/3.png', '/stylesheets/style.css']))
-  // );
+  event.waitUntil(
+    caches
+      .open('static-v17')
+      .then(cache => cache.addAll(['https://neverthanmore.github.io/', '/style.css']))
+  );
 
 });
 
@@ -33,16 +31,11 @@ self.addEventListener('activate', event => {
   );
 });
 
+self.addEventListener('fetch', event => {
+  event.respondWith(caches.match(event.request));
+})
+
 self.addEventListener('push', event => {
-  console.log('[Service Worker] Push Received.');
-  let title = 'Server Push';
-  let options = {
-    body: 'push TEST',
-    icon: './images/jekyll-logo.png'
-  };
-  if (event.data) {
-    options = event.data.json();
-    title = options.title;
-  }
-  event.waitUntil(self.registration.showNotification(title, options));
+  self.registration.update && self.registration.update()
+    .then(() => console.log('do update'))
 });
