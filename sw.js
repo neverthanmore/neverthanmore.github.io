@@ -1,11 +1,11 @@
-const expectedCaches = ['static-v19'];
+const expectedCaches = ['static-v20'];
 
 self.addEventListener('install', event => {
-  console.log('v19 installing…');
+  console.log('v20 installing…');
 
   event.waitUntil(
     caches
-      .open('static-v19')
+      .open('static-v20')
       .then((cache) => {
         self.skipWaiting();
         return cache;
@@ -30,7 +30,7 @@ self.addEventListener('activate', event => {
       )
       .then(() => {
         self.clients.claim();
-        console.log('v19 now ready to handle fetches!');
+        console.log('v20 now ready to handle fetches!');
       })
   );
 });
