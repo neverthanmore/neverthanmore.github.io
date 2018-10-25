@@ -1,11 +1,11 @@
-const expectedCaches = ['static-v22'];
+const expectedCaches = ['static-v23'];
 
 self.addEventListener('install', event => {
-  console.log('v22 installing…');
+  console.log('v23 installing…');
 
   event.waitUntil(
     caches
-      .open('static-v22')
+      .open('static-v23')
       .then(cache => cache.addAll(['https://neverthanmore.github.io/', '/style.css']))
   );
 });
@@ -25,7 +25,7 @@ self.addEventListener('activate', event => {
         )
       )
       .then(() => {
-        console.log('v22 now ready to handle fetches!');
+        console.log('v23 now ready to handle fetches!');
       })
   );
 });
